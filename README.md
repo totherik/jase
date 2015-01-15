@@ -4,9 +4,6 @@ jase
 A simple command line utility for extracting data from and writing data to JSON files.
 
 ```
-jase <key> [options]
-```
-```
 Usage:
   jase <key> [file] [options]
 
