@@ -46,7 +46,7 @@ var key, chunks, stream;
 
 key = argv._[0];
 chunks = [];
-stream = argv._.length > 1 ? fs.createReadStream(argv._[1]) : process.stdin;
+stream = argv.file ? fs.createReadStream(argv.file) : process.stdin;
 
 stream.on('readable', function () {
     var chunk;
@@ -62,9 +62,16 @@ stream.on('end', function () {
     json = JSON.parse(json);
 
     result = jase.exec(json, key, argv.save);
+    if (result === undefined) {
+        process.stderr.write('Error: \'' + key + '\' not found.');
+        process.exit(1);
+        return;
+    }
+
     if (!thing.isPrimitive(result)) {
         result = JSON.stringify(result, null, argv.indent);
     }
 
     process.stdout.write(result);
+    process.exit(0);
 });

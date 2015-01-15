@@ -1,10 +1,34 @@
 'use strict';
 
 
+function split(string, delimiter) {
+    var i, tmp, result;
+
+    i = 0;
+    tmp = '';
+    result = [];
+
+    while (i < string.length) {
+        if (string[i] === '\\' && string[i + 1] === delimiter) {
+            tmp += delimiter;
+            i += 1;
+        } else if (string[i] === delimiter) {
+            result.push(tmp);
+            tmp = '';
+        } else {
+            tmp += string[i];
+        }
+        i += 1;
+    }
+
+    result.push(tmp);
+    return result;
+}
+
 function get(src, key) {
     var keys, value;
 
-    keys = key.split('.');
+    keys = split(key, '.');
     value = src;
 
     while (value && (key = keys.shift())) {
@@ -22,7 +46,7 @@ function get(src, key) {
 function set(src, key, value) {
     var keys, prop, obj;
 
-    keys = key.split('.');
+    keys = split(key, '.');
     prop = keys.pop();
     obj = src = JSON.parse(JSON.stringify(src));
 
