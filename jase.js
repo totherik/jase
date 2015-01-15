@@ -7,6 +7,14 @@ var minimist = require('minimist');
 var jase = require('./index');
 
 
+function parse(obj) {
+    try {
+        return JSON.parse(obj);
+    } catch (err) {
+        return obj;
+    }
+}
+
 // Sort out command line arguments
 var opts, argv;
 
@@ -63,7 +71,7 @@ stream.on('end', function () {
     json = Buffer.concat(chunks).toString('utf8');
     json = JSON.parse(json);
 
-    result = jase.exec(json, key, argv.save);
+    result = jase.exec(json, key, parse(argv.save));
     if (result === undefined) {
         process.stderr.write('Error: \'' + key + '\' not found.');
         process.exit(1);

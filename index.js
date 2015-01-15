@@ -25,6 +25,7 @@ function split(string, delimiter) {
     return result;
 }
 
+
 function get(src, key) {
     var keys, value;
 

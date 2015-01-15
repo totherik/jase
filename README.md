@@ -44,3 +44,28 @@ $ cat ./package.json | jase scripts
 $ cat ./package.json | jase scripts.test
 "tape test/*.js"
 ```
+
+
+### Sample Uses
+
+#### Get a property
+```bash
+$ cat package.json | jase author
+```
+
+#### Get a nested property
+```bash
+$ cat package.json | scripts.test
+```
+
+#### Reformat a file
+Convert a JSON file with 2-space indenting to 4-space
+```bash
+$ cat package.json | jase "" -i 4
+```
+
+#### Add a property
+Chain operations and do things like add properties.
+```bash
+$ cat package.json | jase config -s {} | jase config.port -s 8000
+```
