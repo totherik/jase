@@ -1,6 +1,6 @@
 {
   "name": "jase",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Simple CLI tool for modifying JSON data.",
   "main": "index.js",
   "bin": "jase.js",
