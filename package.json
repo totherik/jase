@@ -1,0 +1,25 @@
+{
+  "name": "jase",
+  "version": "1.0.0",
+  "description": "Simple CLI tool for modifying JSON data.",
+  "main": "index.js",
+  "bin": "jase.js",
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "keywords": [
+    "json",
+    "cli",
+    "read",
+    "write"
+  ],
+  "author": "Erik Toth <totherik@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "tape": "^3.0.3"
+  },
+  "dependencies": {
+    "core-util-is": "^1.0.1",
+    "minimist": "^1.1.0"
+  }
+}
