@@ -55,7 +55,7 @@ $ cat package.json | jase author
 
 #### Get a nested property
 ```bash
-$ cat package.json | scripts.test
+$ cat package.json | jase scripts.test
 ```
 
 #### Reformat a file
