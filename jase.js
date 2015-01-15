@@ -13,6 +13,7 @@ var opts, argv;
 opts = {
     string: ['save'],
     alias: {
+        file: ['f'],
         save: ['s'],
         indent: ['i']
     },
