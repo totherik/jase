@@ -1,14 +1,15 @@
 jase
 ====
 
-A simple command line utility for extracting data from and writing data to JSON files.
+A simple command line utility for extracting data from and writing data to JSON-formatted data structures.
 
 ```
 Usage:
-  jase <key> [file] [options]
+  jase <key> [options]
 
 Arguments:
   <key>     A dot (`.`) delimited key which references the value that should be returned or overwritten.
+            Escape dot characters in key names using '\', e.g. 'config.foo\.bar'.
 
 Options:
   -f, --file <file>          The JSON file to read.

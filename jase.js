@@ -25,10 +25,11 @@ opts = {
 argv = minimist(process.argv.slice(2), opts);
 if (argv._.length === 0) {
     console.log('Usage:');
-    console.log('  jase <key> [file] [options]');
+    console.log('  jase <key> [options]');
     console.log('');
     console.log('Arguments:');
     console.log('  <key>     A dot (`.`) delimited key which references the value that should be returned or overwritten.');
+    console.log('            Escape dot characters in key names using \'\\\', for example \'config.foo\\.bar\'.');
     console.log('');
     console.log('Options:');
     console.log('  -f, --file <file>          The JSON file to read.');
