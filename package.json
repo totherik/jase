@@ -16,6 +16,9 @@
     "write"
   ],
   "author": "Erik Toth <totherik@gmail.com>",
+  "contributors": [
+    "Ján Dzurek <famousgarkin@outlook.com>"
+  ],
   "license": "ISC",
   "devDependencies": {
     "tape": "^3.0.3"

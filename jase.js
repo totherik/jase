@@ -23,6 +23,7 @@ opts = {
     alias: {
         file: ['f'],
         save: ['s'],
+        delete: ['d'],
         indent: ['i']
     },
     default: {
@@ -42,6 +43,7 @@ if (argv._.length === 0) {
     console.log('Options:');
     console.log('  -f, --file <file>          The JSON file to read.');
     console.log('  -s, --save <value>         The new value to set for the provided key.');
+    console.log('  -d, --delete               Delete the provided key.');
     console.log('  -i, --indent <spaces>      The number of spaces to indent the newly written JSON.');
     console.log('');
     console.log('Example:');
@@ -66,12 +68,20 @@ stream.on('readable', function () {
 });
 
 stream.on('end', function () {
-    var json, result;
+    var json, result, saveValue;
 
     json = Buffer.concat(chunks).toString('utf8');
     json = JSON.parse(json);
 
-    result = jase.exec(json, key, parse(argv.save));
+    saveValue = parse(argv.save);
+    if (saveValue) {
+        result = jase.set(json, key, saveValue);
+    } else if (argv.delete) {
+        result = jase.del(json, key);
+    } else {
+        result = jase.get(json, key);
+    }
+
     if (result === undefined) {
         process.stderr.write('Error: \'' + key + '\' not found.');
         process.exit(1);

@@ -14,6 +14,7 @@ Arguments:
 Options:
   -f, --file <file>          The JSON file to read.
   -s, --save <value>         The new value to set for the provided key.
+  -d, --delete               Delete the provided key.
   -i, --indent <spaces>      The number of spaces to indent the newly written JSON.
 
 Example:
@@ -58,14 +59,19 @@ $ cat package.json | jase author
 $ cat package.json | jase scripts.test
 ```
 
+#### Add a property
+Chain operations and do things like add nested properties.
+```bash
+$ cat package.json | jase config -s {} | jase config.port -s 8000
+```
+
+#### Delete a property
+```bash
+$ cat package.json | jase scripts -d
+```
+
 #### Reformat a file
 Convert a JSON file with 2-space indenting to 4-space
 ```bash
 $ cat package.json | jase "" -i 4
-```
-
-#### Add a property
-Chain operations and do things like add properties.
-```bash
-$ cat package.json | jase config -s {} | jase config.port -s 8000
 ```
