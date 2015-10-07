@@ -63,14 +63,28 @@ function set(src, key, value) {
     return undefined;
 }
 
+function del(src, key) {
+    var keys, prop, obj;
 
-function exec(obj, key, value) {
-    return value ? set(obj, key, value) : get(obj, key);
+    keys = split(key, '.');
+    prop = keys.pop();
+    obj = src = JSON.parse(JSON.stringify(src));
+
+    while (obj && (key = keys.shift())) {
+        obj = obj[key];
+    }
+
+    if (!keys.length) {
+        delete obj[prop];
+        return src;
+    }
+
+    return undefined;
 }
 
 
 module.exports = {
     get: get,
     set: set,
-    exec: exec
+    del: del
 };
