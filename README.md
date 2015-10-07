@@ -13,7 +13,7 @@ Arguments:
 
 Options:
   -f, --file <file>          The JSON file to read.
-  -s, --save <value>         The new value to set for the provided key.
+  -s, --set <value>         The new value to set for the provided key.
   -d, --delete               Delete the provided key.
   -i, --indent <spaces>      The number of spaces to indent the newly written JSON.
 
