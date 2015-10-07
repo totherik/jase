@@ -5,7 +5,7 @@ var jase = require('../index');
 test(function (t) {
     var obj, result;
 
-    t.plan(6);
+    t.plan(8);
 
     obj = {
         a: 1,
@@ -14,13 +14,15 @@ test(function (t) {
         }
     };
 
-    result = jase.del(obj, 'a');
-    t.notOk(result.hasOwnProperty('a'));
+    result = jase.set(obj, 'a', 2);
+    t.ok(result.hasOwnProperty('a'));
+    t.equal(result.a, 2);
     t.ok(result.hasOwnProperty('b'));
     t.ok(result.b.hasOwnProperty('c'));
 
-    result = jase.del(obj, 'b.c');
+    result = jase.set(obj, 'b.c', 4);
     t.ok(result.hasOwnProperty('a'));
     t.ok(result.hasOwnProperty('b'));
-    t.notOk(result.b.hasOwnProperty('c'));
+    t.ok(result.b.hasOwnProperty('c'));
+    t.equal(result.b.c, 4);
 });
